@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{28D61182-6E8E-4347-16F4-75DD8C7DEF98}") = "Pathfinder Spellcard Creator", "Assembly-CSharp.csproj", "{670868F5-DFE9-8853-F0A8-741303580AC9}"
+EndProject
+Project("{28D61182-6E8E-4347-16F4-75DD8C7DEF98}") = "Pathfinder Spellcard Creator", "Assembly-CSharp-Editor.csproj", "{1C9E49DA-AF20-8C31-D948-89DBC28AE9BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{670868F5-DFE9-8853-F0A8-741303580AC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{670868F5-DFE9-8853-F0A8-741303580AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{670868F5-DFE9-8853-F0A8-741303580AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{670868F5-DFE9-8853-F0A8-741303580AC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C9E49DA-AF20-8C31-D948-89DBC28AE9BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C9E49DA-AF20-8C31-D948-89DBC28AE9BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C9E49DA-AF20-8C31-D948-89DBC28AE9BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C9E49DA-AF20-8C31-D948-89DBC28AE9BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

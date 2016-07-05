@@ -1,0 +1,15 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Editor\CardGeneratorEditor.cs">
+    <Files>
+      <File FileName="Assets\Scripts\CardGenerator.cs" Line="7" Column="4" />
+      <File FileName="Assets\Scripts\Editor\CardGeneratorEditor.cs" Line="122" Column="12" />
+      <File FileName="Assets\Scripts\SpellCard.cs" Line="17" Column="23" />
+      <File FileName="Assets\Scripts\SpellCardObject.cs" Line="25" Column="35" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
