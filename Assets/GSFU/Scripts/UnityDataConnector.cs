@@ -96,7 +96,7 @@ public class UnityDataConnector : MonoBehaviour
 	
 		string response = www.text;
 		Debug.Log(elapsedTime + " : " + response);
-		currentStatus = "Connection stablished, parsing data...";
+		currentStatus = "Connection established, parsing data...";
 
 		if (response == "\"Incorrect Password.\"")
 		{

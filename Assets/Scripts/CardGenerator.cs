@@ -50,6 +50,10 @@ public class CardGenerator : MonoBehaviour
 	[SerializeField] private SpellCard m_SpellCard;
 
     // properties
+	public SpellCard SpellCard
+	{
+		get { return m_SpellCard; }
+	}
     #endregion
 
     #region Unity API
