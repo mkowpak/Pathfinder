@@ -21,6 +21,19 @@ public class BoundedText : MonoBehaviour
     // consts
 
     // enums
+	private enum eXAlignment
+	{
+		LEFT,
+		CENTER,
+		RIGHT
+	}
+
+	private enum eYAlignment
+	{
+		TOP,
+		CENTER,
+		BOTTOM
+	}
 
     // public variables
 
@@ -29,6 +42,9 @@ public class BoundedText : MonoBehaviour
     // private variables
 	[SerializeField] private bool m_IsMultiline = false;
 	[SerializeField] private bool m_MaximizeText = false;
+	[SerializeField] private int m_MaxFontSize = 50;
+	[SerializeField] private eXAlignment m_XAlignment = eXAlignment.LEFT;
+	[SerializeField] private eYAlignment m_YAlignment = eYAlignment.TOP;
 
 	private TextMesh m_TextMesh = null;
 	private BoxCollider2D m_BoxCollider2D = null;
@@ -60,6 +76,10 @@ public class BoundedText : MonoBehaviour
 		Initialize();
 
 		m_TextMesh.text = text;
+		if (m_MaximizeText)
+		{
+			m_TextMesh.fontSize = m_MaxFontSize;
+		}
 
 		ResizeText();
 	}
@@ -80,9 +100,9 @@ public class BoundedText : MonoBehaviour
 		}
 
 		// recursive check, increment/decrement font size by 1 every time
-		if (CheckSuccess())
+		if (CheckSuccess() || m_TextMesh.fontSize <= 0)
 		{
-			if (!m_MaximizeText || m_WasLarger)
+			if (!m_MaximizeText || m_WasLarger || (m_MaximizeText && m_TextMesh.fontSize >= m_MaxFontSize))
 			{
 				return;
 			}
@@ -121,12 +141,53 @@ public class BoundedText : MonoBehaviour
 	{
 		Bounds textMeshBounds = m_TextMesh.GetComponent<Renderer>().bounds;
 
-		// find to left corner of each box
-		Vector3 textTopLeft = new Vector3(textMeshBounds.min.x, textMeshBounds.max.y, transform.position.z);
-		Vector3 boxTopLeft = new Vector3(m_BoxCollider2D.bounds.min.x, m_BoxCollider2D.bounds.max.y, transform.position.z);
+		Vector3 destination = Vector3.zero; // location on the box
+		Vector3 source = Vector3.zero; // location on the text mesh
+
+		float x1 = 0;
+		float y1 = 0;
+		float x2 = 0;
+		float y2 = 0;
+
+		// setup x pos
+		if (m_XAlignment == eXAlignment.LEFT)
+		{
+			x1 = textMeshBounds.min.x;
+			x2 = m_BoxCollider2D.bounds.min.x;
+		}
+		else if (m_XAlignment == eXAlignment.CENTER)
+		{
+			x1 = textMeshBounds.center.x;
+			x2 = m_BoxCollider2D.bounds.center.x;
+		}
+		else if (m_XAlignment == eXAlignment.RIGHT)
+		{
+			x1 = textMeshBounds.max.x;
+			x2 = m_BoxCollider2D.bounds.max.x;
+		}
+
+		// setup y pos
+		if (m_YAlignment == eYAlignment.TOP)
+		{
+			y1 = textMeshBounds.max.y;
+			y2 = m_BoxCollider2D.bounds.max.y;
+		}
+		else if (m_YAlignment == eYAlignment.CENTER)
+		{
+			y1 = textMeshBounds.center.y;
+			y2 = m_BoxCollider2D.bounds.center.y;
+		}
+		else if (m_YAlignment == eYAlignment.BOTTOM)
+		{
+			y1 = textMeshBounds.min.y;
+			y2 = m_BoxCollider2D.bounds.min.y;
+		}
+			
+		source = new Vector3(x1, y1, transform.position.z);
+		destination = new Vector3(x2, y2, transform.position.z);
 
 		// reposition
-		m_TextMesh.transform.position += boxTopLeft - textTopLeft;
+		m_TextMesh.transform.position += destination - source;
 	}
 
 	private void DoMultilineSeparation()
